@@ -20,13 +20,14 @@ class ViewController extends Controller
     public function all(): View {
         try {
             $blogs = $this->blogService->all();
+            $count = collect($blogs)->count();
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             return redirect(route('welcome'))
         ->with('failed', 'Something wrong!');
         }
 
-        return view('welcome', compact('blogs'));
+        return view('welcome', compact('blogs', 'count'));
     }
 
     public function detail($blogId): View {
