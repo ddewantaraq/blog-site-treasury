@@ -21,6 +21,7 @@ Blog site app that has features:
 3. Run 
 ```
 docker-composer up -d
+cp .env.example .env
 composer install
 npm install
 php artisan migrate --seed
